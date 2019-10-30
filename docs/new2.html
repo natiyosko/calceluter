@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>המחשבון של בצלאל איזנשטרק המלך</title>
+    <style>
+    .numbut{
+        background-color: rgb(0, 183, 255);
+        color: antiquewhite
+    }
+    .operbut{
+        background-color: blueviolet;
+        color: antiquewhite
+    }
+    .c{
+        background-color: red;
+        color: antiquewhite
+    }
+    .bigbutten{
+        width: 100%;
+        background-color: blueviolet;
+        color: antiquewhite
+
+    }
+    </style>
+ 
+</head>
+<body>
+<table colspan="4" border="3" style="background-color:rgb(51, 255, 0)" style="border-color:black" >
+<th colspan="4"  height="50" id="top" align='right'>
+        <span id="targil"></span><br/>
+        <span id="oparotor"></span><br/>
+        <span id="num 1"></span><br/>
+</th>
+<tr>
+  <td>  <button onclick="operclick('+')" class="operbut">+</button></td>
+  <td>  <button onclick="numclick(1)" class="numbut">1</button></td>
+  <td>  <button onclick="numclick(2)" class="numbut">2</button></td>
+  <td>  <button onclick="numclick(3)" class="numbut">3</button></td>
+</tr>
+<tr>
+  <td>  <button onclick="operclick('-')" class="operbut">-</button></td>
+  <td>  <button onclick="numclick(4)" class="numbut">4</button></td>
+  <td>  <button onclick="numclick(5)" class="numbut">5</button></td>
+  <td>  <button onclick="numclick(6)" class="numbut">6</button></td>
+</tr>
+<tr>
+  <td>  <button onclick="operclick('x')" class="operbut">x</button></td>
+  <td>  <button onclick="numclick(7)" class="numbut">7</button></td>
+  <td>  <button onclick="numclick(8)" class="numbut">8</button></td>
+  <td>  <button onclick="numclick(9)" class="numbut">9</button></td>
+</tr>
+<tr>
+  <td>  <button onclick="operclick('/')" class="operbut">/</button></td>
+  <td>  <button onclick="operclick('^')" class="operbut">^</td>
+  <td>  <button onclick="numclick(0)" class="numbut">0</button></td>
+  <td>  <button onclick="clear1()" class="c">c</button></td>
+</tr>
+<tr>
+  <td colspan="4"><button class="bigbutten" onclick="equls('=')" class="operbut">=</button></td>
+</tr>
+</table>
+<span id="hestury" style="display:none"></span>
+<script>
+    //  console.log('js start')
+    
+    let operotor = "", total = 0 ;
+
+    function numclick(num){
+        // console.log('numclick start', num)
+        // console.log('how y` doing')
+        // console.log('blablabla')
+        // console.error('we dont like blablabla')
+        document.getElementById("num 1").innerHTML += (num)
+        document.getElementById("hestury").innerHTML += (num)
+        // console.log('numclick end', num)
+    }
+
+    function operclick(oper){
+        // console.log('operlick start', oper)
+        let n = document.getElementById("num 1").innerHTML
+        let t = document.getElementById("targil").innerHTML
+        document.getElementById("oparotor").innerHTML = (oper)
+        document.getElementById("hestury").innerHTML += (oper)
+        document.getElementById("num 1").innerHTML = ""
+        switch(operotor){
+            case '':
+            total = parseInt(n)
+            
+            break;
+            case '+' :
+            total += parseInt(n)
+            break;
+            case '-' :
+            total -= parseInt(n)
+            break;
+            case 'x' :
+            total *= parseInt(n)
+            break;
+            case '/' :
+            total /= parseInt(n)
+            break;
+            case '^' :
+            total **= parseInt(n)
+            break;
+        }
+        // console.log('switch end')
+        // console.error('ther is no log for the start of the switch')
+        document.getElementById("targil").innerHTML = (total)
+        operotor = oper 
+        // console.log('operlick end', oper)
+         
+    }
+    function equls(){
+        // console.log('equls start')
+        operclick("")
+        document.getElementById("targil").innerHTML = ""
+        document.getElementById("num 1").innerHTML = total
+        document.getElementById("hestury").innerHTML += ("=" + total)
+        // console.log('equls end')
+        
+    }
+
+    function clear1(){
+        total=0;
+        document.getElementById("hestury").style.display = ""
+        document.getElementById("num 1").innerHTML = ""
+        document.getElementById("targil").innerHTML = ""
+        document.getElementById("oparotor").innerHTML = ""
+        document.getElementById("hestury").innerHTML += ' <br/>'
+    }
+    
+    // console.error('I hate the calculater')
+        </script>
+</body>
+</html>
+
